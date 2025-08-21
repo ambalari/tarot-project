@@ -4,7 +4,13 @@ import { RouterProvider } from 'react-router-dom';
 import router from './router';
 import { CardsProvider } from './context/CardsContext';
 
-createRoot(document.getElementById('root')).render(
+const rootElement = document.getElementById('root');
+
+if (!rootElement) {
+  throw new Error('Root element not found');
+}
+
+createRoot(rootElement).render(
   <React.StrictMode>
     <CardsProvider>
       <RouterProvider router={router} />
